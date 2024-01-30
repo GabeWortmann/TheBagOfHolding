@@ -6,7 +6,7 @@ An informational organizer for Dungeons and Dragons campaigns
 
 ## Wireframe
 
-link
+![WireFrame](<pictures/Project Diagram.drawio.png>)
 
 ## User Stories
 
