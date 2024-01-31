@@ -10,9 +10,9 @@ An informational organizer for Dungeons and Dragons campaigns
 
 ## User Stories
 
-1. 
-2. 
-3. 
+1. Users will be able to create, update, and delete a campaign
+2. Users will be able to create, update, and delete a character
+3. Users will be able to create, update, and delete items and quests whilst assigning them to a character within a campaign
 
 ## Tree Diagram of React Components
 
@@ -20,7 +20,7 @@ link
 
 ## Schema (Relationships, columns, validations)
 
-link
+![Schema](<pictures/schema-sc.png>)
 
 ## API Routes
 
