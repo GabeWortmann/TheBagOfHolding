@@ -16,7 +16,7 @@ An informational organizer for Dungeons and Dragons campaigns
 
 ## Tree Diagram of React Components
 
-link
+![TreeDiagram](<pictures/project_react_diagram.drawio.png>)
 
 ## Schema (Relationships, columns, validations)
 
@@ -24,7 +24,7 @@ link
 
 ## API Routes
 
-links
+![APIRoutes](<pictures/API Routes.png>)
 
 ## 3 Strecth Goals
 
@@ -34,4 +34,4 @@ links
 
 ## Kanban Board
 
-link
+![Kanban](<pictures/Phase 5 Kanban.png>)
