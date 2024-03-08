@@ -1,16 +1,12 @@
 import React from "react";
 
-function CharactersCard({ characters }) {
+function CharactersCard({ character }) {
 
     return (
-        <ul className="character-list-card">
-            {characters.map((character) => (
-                <div>
-                    <div className="character-list-name">{character.char_name}</div>
-                    <div className="character-list-desc">Description: {character.char_desc}</div>
-                </div>
-            ))}
-        </ul>
+        <div>
+            <h2 className="character-list-name">{character.char_name}</h2>
+            <p className="character-list-desc">Description: {character.char_desc}</p>
+        </div>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar'
-import CharactersCard from './CharactersCard'
+import CharactersList from './CharactersList'
 import CampaignsCard from './CampaignsCard'
 
 
@@ -11,7 +11,7 @@ function MainPage() {
     const [characters, setCharacters] = useState({})
 
     useEffect(() => {
-        fetch(`${url}/characters/${character.id}`)
+        fetch(`${url}/characters/${characters.id}`)
             .then((res) => res.json())
             .then((data) => {
                 setCharacters(data)
@@ -21,7 +21,7 @@ function MainPage() {
     const [campaigns, setCampaigns] = useState({})
 
     useEffect(() => {
-        fetch(`${url}/campaigns/${campaign.id}`)
+        fetch(`${url}/campaigns/${campaigns.id}`)
             .then((res) => res.json())
             .then((data) => {
                 setCampaigns(data)
@@ -33,7 +33,7 @@ function MainPage() {
         <div>
             <div><NavBar /></div>
             <div><CampaignsCard campaigns={campaigns} /></div>
-            <div><CharactersCard characters={characters} /></div>
+            <div><CharactersList characters={characters} /></div>
         </div>
     )
 }

@@ -21,6 +21,7 @@ class Campaign(db.Model, SerializerMixin):
 class Campaign_characters(db.Model, SerializerMixin):
     __tablename__ = "campaign_characters"
 
+    id = db.Column(db.Integer, primary_key = True)
     campaign_id = db.Column(db.Integer, db.ForeignKey("campaign.id"))
     char_id = db.Column(db.Integer, db.ForeignKey("characters.id"))
 
