@@ -1,7 +1,11 @@
-from config import app
+from server.config import app
 from flask import make_response, request
 
-from models import db, Campaign, Campaign_characters, Characters, Items, Quests
+from server.models import db, Campaign, Campaign_characters, Characters, Items, Quests
+import sys
+from functools import partial
+
+_print = partial(print, file=sys.stderr)
 
 
 @app.route("/campaign", methods = ["GET", "POST"])
@@ -105,11 +109,16 @@ def campaigns_by_id(id):
 @app.route("/characters", methods = ["GET", "POST"])
 def characters():
 
+    _print("starting characters")
+
     if request.method == "GET":
 
-        characters = Characters.query.all()
+        characters: list[Characters] = Characters.query.all()
+        _print(f"found characters: {characters}")
 
-        characters_to_dict = [character.to_dict(rules = ("-reply", )) for character in characters]
+        characters_to_dict = [character.to_dict() for character in characters]
+
+        
 
         response = make_response(
             characters_to_dict,
@@ -148,6 +157,8 @@ def characters():
             {"Error" : "Invalid Method"},
             400
         )
+
+    _print(f"response: {response}")
 
     return response
 

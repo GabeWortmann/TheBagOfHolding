@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 
-function CampaignNav() {
+function CharNav() {
   const navigate = useNavigate();
 
   const navigateToHome = () => {
@@ -26,4 +26,4 @@ function CampaignNav() {
     </nav>
   )
 }
-export default CampaignNav;
+export default CharNav;

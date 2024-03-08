@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar'
 import CharactersList from './CharactersList'
-import CampaignsCard from './CampaignsCard'
+import CampaignsList from './CampaignsList'
 
 
 function MainPage() {
+    console.log("mainPage")
 
-    const url = "http://127.0.0.1:5555"
+    const url = "http://127.0.0.1:5000"
 
-    const [characters, setCharacters] = useState({})
+    const [characters, setCharacters] = useState([])
+    const [campaigns, setCampaigns] = useState([])
 
     useEffect(() => {
-        fetch(`${url}/characters/${characters.id}`)
+        fetch(`${url}/characters`)
             .then((res) => res.json())
             .then((data) => {
                 setCharacters(data)
             })
-    }, [])
-
-    const [campaigns, setCampaigns] = useState({})
-
-    useEffect(() => {
-        fetch(`${url}/campaigns/${campaigns.id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setCampaigns(data)
-            })
+        
+        fetch(`${url}/campaign`)
+        .then((res) => res.json())
+        .then((data) => {
+            setCampaigns(data)
+        })
     }, [])
 
 
     return (
         <div>
             <div><NavBar /></div>
-            <div><CampaignsCard campaigns={campaigns} /></div>
+            <div><CampaignsList campaigns={campaigns} /></div>
             <div><CharactersList characters={characters} /></div>
         </div>
     )

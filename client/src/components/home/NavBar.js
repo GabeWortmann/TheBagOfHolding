@@ -18,7 +18,7 @@ function NavBar() {
   return (
     <nav className='navbar'>
       <ul>
-        <li><h1>Email Trace</h1></li>
+        <li><h1>The Bag of Holding</h1></li>
         <li><button onClick={navigateToHome}>Home</button></li>
         <li><button onClick={navigateToCampaigns}>Campaigns</button></li>
         <li><button onClick={navigateToCharacters}>Characters</button></li>

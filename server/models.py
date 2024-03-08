@@ -15,7 +15,7 @@ class Campaign(db.Model, SerializerMixin):
     campaign_characters = db.relationship('Campaign_characters', back_populates = 'campaign', cascade = "all,delete")
 
     #serialzer rules
-    serialize_rules = ('-campaign_characters.campaign')
+    serialize_rules = ('-campaign_characters.campaign', )
 
 
 class Campaign_characters(db.Model, SerializerMixin):
@@ -30,8 +30,7 @@ class Campaign_characters(db.Model, SerializerMixin):
     characters = db.relationship('Characters', back_populates = 'campaign_characters')
 
     #serialzer rules
-    serialize_rules = ('-campaign.campaign_characters')
-    serialize_rules = ('-characters.campaign_characters')
+    serialize_rules = ('-campaign.campaign_characters', '-characters.campaign_characters')
 
 
 class Characters(db.Model, SerializerMixin):
@@ -63,7 +62,7 @@ class Items(db.Model, SerializerMixin):
     characters = db.relationship('Characters', back_populates = 'items')
 
     #serialzer rules
-    serialize_rules = ('-characters.items')
+    serialize_rules = ('-characters.items', )
 
 
 class Quests(db.Model, SerializerMixin):
@@ -77,4 +76,4 @@ class Quests(db.Model, SerializerMixin):
     characters = db.relationship('Characters', back_populates = 'quests')
 
     #serialzer rules
-    serialize_rules = ('-characters.quests')
+    serialize_rules = ('-characters.quests', )

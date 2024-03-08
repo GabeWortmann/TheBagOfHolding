@@ -1,6 +1,6 @@
-from config import app
+from server.config import app
 
-from models import db, Campaign, Campaign_characters, Characters, Items, Quests
+from server.models import db, Campaign, Campaign_characters, Characters, Items, Quests
 
 
 if __name__ == '__main__':
@@ -8,11 +8,9 @@ if __name__ == '__main__':
 
         print("deleting tables...")
 
-        Campaign.query.delete()
-        Characters.query.delete()
-        Items.query.delete()
-        Quests.query.delete()
-        Campaign_characters.query.delete()
+        db.drop_all()
+        db.create_all()
+
         
         db.session.commit()
 
@@ -87,13 +85,13 @@ if __name__ == '__main__':
                 item_id = items[3].id,
                 quest_id = quests[2].id,
                 char_name = "Lithea Elmonts",
-                char_desc = "A quick witted femalehalfling who knows her way around a forest and a bow who also has a knack for the culinary arts."
+                char_desc = "A quick witted female halfling who knows her way around a forest and a bow who also has a knack for the culinary arts."
             ),
             Characters(
                 item_id = items[2].id,
                 quest_id = quests[1].id,
                 char_name = "Triss Pruinly",
-                char_desc = "A meek but determing female elf who has spent a large portion of her life in devotion to her God, through which she has gained her magical abilities."
+                char_desc = "A meek but determined female elf who has spent a large portion of her life in devotion to her God, through which she has gained her magical abilities."
             )
         ]
 
@@ -104,6 +102,10 @@ if __name__ == '__main__':
             Campaign_characters(
                 char_id = characters[0].id,
                 campaign_id = campaigns[2].id
+            ),
+            Campaign_characters(
+                char_id = characters[0].id,
+                campaign_id = campaigns[1].id
             ),
             Campaign_characters(
                 char_id = characters[1].id,

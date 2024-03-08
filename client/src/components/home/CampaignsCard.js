@@ -1,16 +1,12 @@
 import React from "react";
 
-function CampaignsCard({ campaigns }) {
-
+function CampaignsCard({ campaign }) {
+    console.log("Campaign: " + campaign)
     return (
-        <ul className="campaign-list-card">
-            {campaigns.map((campaign) => (
-                <div>
-                    <div className="campaign-list-name">{campaign.campaign_title}</div>
-                    <div className="campaign-list-desc">Description: {campaign.campaign_desc}</div>
-                </div>
-            ))}
-        </ul>
+        <div>
+            <h2 className="campaign-list-name">{campaign.campaign_title}</h2>
+            <p className="campaign-list-desc">Description: {campaign.campaign_desc}</p>
+        </div>
     )
 }
 
