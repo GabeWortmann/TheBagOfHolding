@@ -3,6 +3,7 @@ import CampaignsNav from './CampaignsNav'
 import CampaignSideBar from './CampaignSideBar'
 import CampaignBody from './CampaignBody'
 import NewCampaign from './NewCampaign'
+import AddCharacter from './AddCharacter'
 
 
 function CampaignPage() {
@@ -12,6 +13,8 @@ function CampaignPage() {
     const [showComponent, setShowComponent] = useState(false);
     const [campaigns, setCampaigns] = useState([]);
     const [newCampaign, setNewCampaign] = useState(false);
+    const [newCharacter, setNewCharacter] = useState(false);
+    const [character, setCharacter] = useState([]);
 
     useEffect(() => {
         fetch(`${url}/campaign`)
@@ -39,12 +42,18 @@ function CampaignPage() {
         setCampaigns(campaign);
     }
 
+    const handleAddCharacterClick = () => {
+        setNewCharacter(!newCharacter);
+    }
+
+
     return (
         <div>
             <div><CampaignsNav /></div>
             <div><CampaignSideBar campaigns={campaigns} toggleComponent={toggleComponent} handleNewPostClick={handleNewPostClick} removeCampaign={removeCampaign} /></div>
-            <div>{showComponent && <CampaignBody campaign={selectedCampaign}/>}</div>
+            <div>{showComponent && <CampaignBody campaign={selectedCampaign} handleAddCharacterClick={handleAddCharacterClick} />}</div>
             <div>{newCampaign && <NewCampaign newCampaign={newCampaign} setNewCampaign={setNewCampaign} addCampaign={addCampaign} />}</div>
+            <div>{newCharacter && <AddCharacter character={character} setCharacter={setCharacter} selectedCampaign={selectedCampaign} />}</div>
         </div>
     )
 }

@@ -405,3 +405,101 @@ def quests_by_id(id):
         )
 
     return response
+
+
+@app.route("/campaign_characters", methods = ["GET", "POST"])
+def campaign_characters():
+
+    if request.method == "GET":
+
+        campaign_characters = Campaign_characters.query.all()
+
+        campaign_characters_to_dict = [campaign_character.to_dict(rules = ("-reply", )) for campaign_character in campaign_characters]
+
+        response = make_response(
+            campaign_characters_to_dict,
+            200
+        )
+
+    elif request.method == "POST":
+
+        try:
+
+            form_data = request.get_json()
+
+            new_reply = Campaign_characters(
+                campaign_id = form_data["campaign_id"],
+                char_id = form_data["char_id"]
+            )
+
+            db.session.add(new_reply)
+            db.session.commit()
+
+            response = make_response(
+                new_reply.to_dict(),
+                201
+            )
+        
+        except ValueError:
+
+            response = make_response(
+                {"error" : "value error"},
+                400
+            )
+
+    else:
+
+        response = make_response(
+            {"Error" : "Invalid Method"},
+            400
+        )
+
+    return response
+
+
+@app.route("/campaign_characters/<int:id>", methods = ["GET", "PATCH", "DELETE"])
+def campaign_characters_by_id(id):
+
+    campaign_character = Campaign_characters.query.filter(Campaign_characters.id == id).first()
+
+    if campaign_character:
+
+        if request.method == "GET":
+
+            response = make_response(
+                campaign_character.to_dict(),
+                200
+            )
+
+        if request.method == "PATCH":
+
+            form_data = request.get_json()
+
+            for key in form_data:
+                setattr(campaign_character, key, form_data[key])
+
+            db.session.commit()
+
+            response = make_response(
+                campaign_character.to_dict(),
+                201
+            )
+
+        if request.method == "DELETE":
+
+            db.session.delete(campaign_character)
+            db.session.commit()
+
+            response = make_response(
+                {},
+                201
+            )
+
+    else:
+
+        response = make_response(
+            {"error" : "invalid ID"},
+            404
+        )
+
+    return response

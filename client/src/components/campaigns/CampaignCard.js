@@ -21,7 +21,7 @@ function CampaignCard({ campaign, toggleComponent, removeCampaign }) {
         <div>
             <div onClick={handleClick}>
                 <li className="campaign">
-                    <p>It's working: {campaign.campaign_title}</p>
+                    <h2>{campaign.campaign_title}</h2>
                     <button id='campaign-delete' onClick={handleDelete}>X</button>
                 </li>
             </div>

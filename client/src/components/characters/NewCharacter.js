@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 
 function NewCharacter({ newCharacter, setNewCharacter , addCharacter }) {
     const formSchema = yup.object({
-        char_name: yup.string().required("Character title is required."),
+        char_name: yup.string().required("Character name is required."),
         char_desc: yup.string().required("Character description is required."),
     });
 
@@ -46,7 +46,7 @@ function NewCharacter({ newCharacter, setNewCharacter , addCharacter }) {
             <div className="newCharacter">
                 <form onSubmit={formik.handleSubmit}>
                     <div>
-                        <label htmlFor="char_name">Character Title</label>
+                        <label htmlFor="char_name">Character Name</label>
                         <input
                             id="char_name"
                             name="char_name"

@@ -1,7 +1,7 @@
 import React from 'react';
 import CampaignSubBody from './CampaignSubBody';
 
-function CampaignBody({ campaign }) {
+function CampaignBody({ campaign, handleAddCharacterClick }) {
 
     return (
         <div>
@@ -17,6 +17,7 @@ function CampaignBody({ campaign }) {
                         />
                     )
                 })}
+                <button onClick={handleAddCharacterClick}>Add New Player Character</button>
             </div>
         </div>
     )
